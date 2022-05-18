@@ -12,7 +12,7 @@ function App() {
     {
       uri: "ens/ipfs.web3api.eth",
       plugin: ipfsPlugin({
-        provider: "http://localhost:8080",
+        provider: "http://localhost:5001",
       }),
     },
     {

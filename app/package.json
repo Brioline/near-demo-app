@@ -30,11 +30,12 @@
     "@types/react-dom": "^18.0.4",
     "@web3api/client-js": "0.0.1-prealpha.69",
     "@web3api/react": "0.0.1-prealpha.69",
-    "near-polywrap-js": "file:near-polywrap-js-0.0.3.tgz",
+    "near-polywrap-js": "file:../plugin-js",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-scripts": "5.0.1",
-    "typescript": "^4.6.4"
+    "typescript": "^4.6.4",
+    "url": "0.11.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.24.0",
