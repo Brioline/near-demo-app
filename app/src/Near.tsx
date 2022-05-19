@@ -7,7 +7,7 @@ export default function Near() {
   const getData = async () => {
     const plugins = await client.getPlugins();
     console.log(plugins); 
-    const res = await client.resolveUri("ens/near-api.eth");
+    const res = await client.resolveUri("ipfs/QmVLHmBaAqzELwSypKqd6eD2SepHY6A8nm28wjcUtgdoko");
     console.log("res", res);
     /*
     const query = await client.query({
