@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useQuery } from "../utils/hooks";
 import { Near_Queries } from "../utils/queries";
+import { BlockResult } from "../utils/types";
 
 export default function Near() {
-  //wallet 
+  //wallet
   const [, requestSignIn] = useQuery<{
     requestSignIn: any;
   }>(Near_Queries.requestSignIn);
@@ -22,25 +23,25 @@ export default function Near() {
 
   // Transaction
   const [, signAndSendTransaction] = useQuery<{
-    signAndSendTransaction: any ;
+    signAndSendTransaction: any;
   }>(Near_Queries.signAndSendTransaction);
   const [, createsTransactionWithoutWallet] = useQuery<{
     createsTransactionWithoutWallet: any;
   }>(Near_Queries.createsTransactionWithoutWallet);
 
   const [, signsTransactionWithoutWallet] = useQuery<{
-    signsTransactionWithoutWallet: any ;
+    signsTransactionWithoutWallet: any;
   }>(Near_Queries.signsTransactionWithoutWallet);
 
   const [, signAndSendTransactionAsync] = useQuery<{
-    signAndSendTransactionAsync: any ;
+    signAndSendTransactionAsync: any;
   }>(Near_Queries.signAndSendTransactionAsync);
 
-  // Queries 
+  // Queries
   const [formatInput, setFormatInput] = useState(
     "9999989999999998370878870000000"
   );
-  const [parseInput, setParseInput] = useState("9,999,989.99999999837087887");
+  const [parseInput, setParseInput] = useState("0.000008999999999837087887");
 
   const [, format] = useQuery<{
     formatNearAmount: string;
@@ -64,9 +65,9 @@ export default function Near() {
   }>(Near_Queries.getStatus);
 
   const [, getGasPrice] = useQuery<{
-    gasPrice: any /* BlockResult */;
+    gasPrice: BlockResult /* BlockResult */;
   }>(Near_Queries.getGasPrice);
-  
+
   const [, getStatus] = useQuery<{
     getStatus: any /* BlockResult */;
   }>(Near_Queries.getStatus);
@@ -74,7 +75,7 @@ export default function Near() {
   const [, getExperimental_protocolConfig] = useQuery<{
     getExperimental_protocolConfig: any /* BlockResult */;
   }>(Near_Queries.getExperimental_protocolConfig);
-  
+
   const [, getChunk] = useQuery<{
     getChunk: any /* BlockResult */;
   }>(Near_Queries.getChunk);
@@ -98,19 +99,19 @@ export default function Near() {
   const [, getAccountChanges] = useQuery<{
     getAccountChanges: any /* BlockResult */;
   }>(Near_Queries.getAccountChanges);
-  
+
   const [, getContractStateChanges] = useQuery<{
     getContractStateChanges: any /* BlockResult */;
   }>(Near_Queries.getContractStateChanges);
-  
+
   const [, getSingleAccessKeyChanges] = useQuery<{
     getSingleAccessKeyChanges: any /* BlockResult */;
   }>(Near_Queries.getSingleAccessKeyChanges);
-  
+
   const [, getTxStatus] = useQuery<{
     getTxStatus: any /* BlockResult */;
   }>(Near_Queries.getTxStatus);
-  
+
   const [formatted, setFormatted] = useState<string>("");
 
   const [parsed, setParsed] = useState<string>("");
@@ -135,7 +136,7 @@ export default function Near() {
     data && console.log(data);
     errors && console.log(errors);
   };
-  
+
   const onGetAccountId = async (e: any) => {
     e.preventDefault();
     const { data, errors } = await getAccountId();
@@ -205,7 +206,7 @@ export default function Near() {
     data && console.log(data);
     errors && console.log(errors);
   };
-  
+
   const onGetAccountChanges = async (e: any) => {
     e.preventDefault();
     const { data, errors } = await getAccountChanges();
@@ -229,7 +230,12 @@ export default function Near() {
 
   const onGetExperimental_protocolConfig = async (e: any) => {
     e.preventDefault();
-    const { data, errors } = await getExperimental_protocolConfig({ finality: "final" }); 
+    const { data, errors } = await getExperimental_protocolConfig({
+      blockReference: {
+        finality: "final",
+        block_id: null,
+      },
+    });
     data && console.log(data);
     errors && console.log(errors);
   };
@@ -243,15 +249,16 @@ export default function Near() {
 
   const onGetGasPrice = async (e: any) => {
     e.preventDefault();
-    const { data, errors } = await getGasPrice(); 
+    const { data, errors } = await getGasPrice();
     data && console.log(data);
     errors && console.log(errors);
   };
 
-
   const onGetBlockChanges = async (e: any) => {
     e.preventDefault();
-    const { data, errors } = await getBlockChanges({ blockQuery: { block_id: "12", finality: null, syncCheckpoint: null } });
+    const { data, errors } = await getBlockChanges({
+      blockQuery: { block_id: "12", finality: null, syncCheckpoint: null },
+    });
     data && console.log(data);
     errors && console.log(errors);
   };
@@ -276,7 +283,7 @@ export default function Near() {
 
   const onGetStatus = async (e: any) => {
     e.preventDefault();
-    const { data, errors} = await getStatus();
+    const { data, errors } = await getStatus();
     data && console.log(data);
     errors && console.log(errors);
   };
@@ -318,14 +325,16 @@ export default function Near() {
           </span>
         )}
       </div>
-      <div style={{display: 'flex', flexDirection: 'column', width: '50%'}}>
-          <button onClick={onGetAccountState}>getAccountState</button>
-          <button onClick={onGetStatus}>getStatus</button>
-          <button onClick={onGetGasPrice}>getGasPrice</button>
-          <button onClick={onGetExperimental_protocolConfig}>getExperimental_protocolConfig</button>
-          <button onClick={onGetChunk}>getChunk</button>
+      <div style={{ display: "flex", flexDirection: "column", width: "50%" }}>
+        <button onClick={onGetAccountState}>getAccountState</button>
+        <button onClick={onGetStatus}>getStatus</button>
+        <button onClick={onGetGasPrice}>getGasPrice</button>
+        <button onClick={onGetExperimental_protocolConfig}>
+          getExperimental_protocolConfig
+        </button>
+        <button onClick={onGetChunk}>getChunk</button>
       </div>
-      {/* <button onClick={onGetBlock}>getBlock</button> */}
+      <button onClick={onGetBlock}>getBlock</button>
       {/* <button onClick={onGetBlockChanges}>getBlockChanges</button> */}
     </div>
   );
