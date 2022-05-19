@@ -1,4 +1,5 @@
 import { Web3ApiClient } from "@web3api/client-js";
+
 import { BlockChangeResult, 
   BlockQuery,
   NodeStatusResult, 
@@ -10,6 +11,7 @@ import { BlockChangeResult,
   FinalExecutionOutcome
  } from "./types";
  import * as nearApi from "near-api-js";
+
 
 const client = new Web3ApiClient();
 const apiUri = "ens/near-api.eth";

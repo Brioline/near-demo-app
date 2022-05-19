@@ -1,9 +1,12 @@
 import { nearPlugin } from "near-polywrap-js";
 
+
+export const apiUri = "ipfs/QmT87bNe4f6YRSquuzWbcRC3X7ve6iF32n2Ehudzbkfmpm"
+
 export const getPlugins = () => {
   return [
     {
-      uri: "w3://ens/nearPlugin.web3api.eth",
+      uri: "ens/nearPlugin.web3api.eth",
       plugin: nearPlugin({
         headers: {},
         networkId: "testnet",
