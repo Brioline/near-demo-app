@@ -13,6 +13,7 @@
     "deploy": "npx w3 build --ipfs http://localhost:5001 --test-ens near-api.eth"
   },
   "dependencies": {
+    "@web3api/client-test-env": "^0.0.1-prealpha.80",
     "as-base58": "^0.1.1",
     "as-base64": "^0.2.0",
     "as-fraction": "^0.2.0"

@@ -703,6 +703,14 @@
     axios "0.21.2"
     dotenv "10.0.0"
 
+"@web3api/client-test-env@^0.0.1-prealpha.80":
+  version "0.0.1-prealpha.80"
+  resolved "https://registry.yarnpkg.com/@web3api/client-test-env/-/client-test-env-0.0.1-prealpha.80.tgz#90201273523558d93119952577a25fd36343e2af"
+  integrity sha512-uOoeJPFEpYaQak+KpafQwzN2PIrrsNwgq2lGKpBcJm4kEBrQGVI1WvSCzNZKMB4Doqn1lwgWbbKW9BaVfZurIQ==
+  dependencies:
+    axios "0.21.2"
+    dotenv "10.0.0"
+
 "@web3api/core-js@0.0.1-prealpha.69":
   version "0.0.1-prealpha.69"
   resolved "https://registry.yarnpkg.com/@web3api/core-js/-/core-js-0.0.1-prealpha.69.tgz#9c430dc0cf69e08c4bab3d081cb15370da017d0d"
