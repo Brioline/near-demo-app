@@ -340,3 +340,24 @@ export interface ExecutionProof {
   direction: string;
   hash: string;
 }
+
+export interface Input_requestSignIn {
+  contractId: string | null;
+  methodNames: Array<string> | null;
+  successUrl: string | null;
+  failureUrl: string | null;
+}
+export interface Input_signOut {
+}
+export interface Input_isSignedIn {
+}
+export interface Input_getAccountId {
+}
+
+export declare type Finality = 'optimistic' | 'near-final' | 'final';
+
+export interface BlockResult {
+  author: string;
+  header: BlockHeader;
+  chunks: Chunk[];
+}
