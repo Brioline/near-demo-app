@@ -353,3 +353,11 @@ export interface Input_isSignedIn {
 }
 export interface Input_getAccountId {
 }
+
+export declare type Finality = 'optimistic' | 'near-final' | 'final';
+
+export interface BlockResult {
+  author: string;
+  header: BlockHeader;
+  chunks: Chunk[];
+}
